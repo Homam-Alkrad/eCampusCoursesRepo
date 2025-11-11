@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إجابات بنك الأسئلة</title>
+    <title>MCQ Test Bank Answers - Eng. Homam Alkrad</title>
     <style>
         * {
             margin: 0;
@@ -13,481 +13,614 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding-bottom: 50px;
+            position: relative;
+        }
+
+        body::before {
+            content: 'Eng. Homam Alkrad';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 4rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.05);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #2d3561 0%, #3e2a5e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .top-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .instructor-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 350px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+            border-color: #764ba2;
+        }
+
+        .search-result {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 100;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-result.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-result-item {
+            padding: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .question-num {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .answer-text {
+            color: #333;
+            line-height: 1.5;
         }
 
         .container {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            max-width: 750px;
-            width: 100%;
-            border-top: 4px solid #2c3e50;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .header {
             text-align: center;
-            padding-bottom: 25px;
-            border-bottom: 2px solid #ecf0f1;
-            margin-bottom: 35px;
+            color: white;
+            margin-bottom: 2rem;
         }
 
-        .logo {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 18px;
-            background: #2c3e50;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
         }
 
-        h1 {
-            color: #2c3e50;
-            font-size: 26px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 15px;
-            font-weight: normal;
-        }
-
-        .content {
-            margin-bottom: 35px;
-        }
-
-        .announcement {
-            background: #ecf0f1;
-            padding: 25px;
-            border-radius: 6px;
-            border-left: 4px solid #3498db;
-            margin-bottom: 25px;
-        }
-
-        .announcement-title {
-            color: #2c3e50;
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .announcement-text {
-            color: #34495e;
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .countdown-section {
-            background: #2c3e50;
-            padding: 30px 20px;
-            border-radius: 6px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .countdown-title {
-            color: #ecf0f1;
-            font-size: 15px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
             font-weight: 500;
         }
 
-        .countdown-display {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow-x: auto;
         }
 
-        .time-unit {
-            background: #34495e;
-            padding: 18px 10px;
-            border-radius: 6px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .time-number {
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            font-size: 32px;
-            font-weight: bold;
-            display: block;
-            font-family: 'Courier New', monospace;
-            line-height: 1;
         }
 
-        .time-label {
-            color: #bdc3c7;
-            font-size: 12px;
-            margin-top: 8px;
-            display: block;
-            text-transform: uppercase;
+        th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.15rem;
             letter-spacing: 0.5px;
         }
 
-        .target-date {
-            color: #95a5a6;
-            font-size: 13px;
-            margin-top: 15px;
-            text-align: center;
-            line-height: 1.5;
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
         }
 
-        .contact-section {
-            background: #fafbfc;
-            padding: 25px;
-            border-radius: 6px;
-            border: 1px solid #e1e8ed;
+        tbody tr:hover {
+            background: linear-gradient(to right, #f8f9ff, #fff);
+            transform: scale(1.005);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
         }
 
-        .contact-title {
-            color: #2c3e50;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            text-align: center;
+        td {
+            padding: 1.2rem;
         }
 
-        .contact-info {
-            text-align: center;
-        }
-
-        .phone-number {
-            color: #2c3e50;
-            font-size: 22px;
+        .q-number {
             font-weight: bold;
-            direction: ltr;
-            display: inline-block;
-            letter-spacing: 1px;
-            font-family: 'Courier New', monospace;
+            color: #667eea;
+            font-size: 1.15rem;
+        }
+
+        .answer {
+            color: #333;
+            line-height: 1.6;
         }
 
         .footer {
-            margin-top: 35px;
-            padding-top: 18px;
-            border-top: 2px solid #ecf0f1;
             text-align: center;
-            color: #95a5a6;
-            font-size: 13px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            background: #e74c3c;
             color: white;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .status-badge.available {
-            background: #27ae60;
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
-        /* Tablet Screens */
         @media (max-width: 768px) {
-            .container {
-                padding: 35px 25px;
+            body::before {
+                font-size: 2rem;
             }
 
-            h1 {
-                font-size: 22px;
+            .top-header {
+                padding: 1rem;
             }
 
-            .subtitle {
-                font-size: 14px;
+            .top-header-container {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .logo {
-                width: 60px;
-                height: 60px;
-                font-size: 30px;
+            .instructor-info h2 {
+                font-size: 1.4rem;
             }
 
-            .announcement {
-                padding: 20px;
+            .contact-info {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
             }
 
-            .announcement-title {
-                font-size: 16px;
+            .nav-container {
+                flex-direction: column;
             }
 
-            .announcement-text {
-                font-size: 15px;
+            .nav-links {
+                width: 100%;
+                justify-content: center;
             }
 
-            .countdown-section {
-                padding: 25px 15px;
+            .search-container {
+                max-width: 100%;
             }
 
-            .countdown-display {
-                gap: 10px;
+            .header h1 {
+                font-size: 2rem;
             }
 
-            .time-unit {
-                padding: 15px 8px;
+            .header p {
+                font-size: 1rem;
             }
 
-            .time-number {
-                font-size: 28px;
+            .table-container {
+                padding: 1.5rem;
             }
 
-            .time-label {
-                font-size: 11px;
+            th, td {
+                padding: 0.8rem 0.5rem;
+                font-size: 0.9rem;
             }
 
-            .phone-number {
-                font-size: 20px;
-            }
-
-            .contact-section {
-                padding: 20px;
+            table {
+                font-size: 0.85rem;
             }
         }
 
-        /* Mobile Screens */
         @media (max-width: 480px) {
-            body {
-                padding: 10px;
+            body::before {
+                font-size: 1.5rem;
             }
 
-            .container {
-                padding: 25px 18px;
-                border-radius: 6px;
+            .instructor-info h2 {
+                font-size: 1.2rem;
             }
 
-            h1 {
-                font-size: 19px;
+            .contact-item {
+                font-size: 0.85rem;
             }
 
-            .subtitle {
-                font-size: 13px;
+            .header h1 {
+                font-size: 1.6rem;
             }
 
-            .logo {
-                width: 55px;
-                height: 55px;
-                font-size: 28px;
-                margin-bottom: 15px;
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
             }
 
-            .header {
-                padding-bottom: 20px;
-                margin-bottom: 25px;
+            .nav-links a {
+                font-size: 1rem;
             }
 
-            .announcement {
-                padding: 18px;
-                margin-bottom: 20px;
-            }
-
-            .announcement-title {
-                font-size: 15px;
-                gap: 6px;
-            }
-
-            .announcement-text {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-
-            .countdown-section {
-                padding: 20px 12px;
-                margin-bottom: 20px;
-            }
-
-            .countdown-title {
-                font-size: 13px;
-                margin-bottom: 15px;
-            }
-
-            .countdown-display {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .time-unit {
-                padding: 12px 6px;
-            }
-
-            .time-number {
-                font-size: 24px;
-            }
-
-            .time-label {
-                font-size: 10px;
-                margin-top: 6px;
-            }
-
-            .target-date {
-                font-size: 12px;
-                margin-top: 12px;
-                padding: 0 5px;
-            }
-
-            .contact-section {
-                padding: 18px;
-            }
-
-            .contact-title {
-                font-size: 14px;
-                margin-bottom: 10px;
-            }
-
-            .phone-number {
-                font-size: 18px;
-                letter-spacing: 0.5px;
-            }
-
-            .footer {
-                margin-top: 25px;
-                padding-top: 15px;
-                font-size: 12px;
-            }
-
-            .status-badge {
-                padding: 4px 8px;
-                font-size: 10px;
+            th, td {
+                padding: 0.6rem 0.3rem;
+                font-size: 0.8rem;
             }
         }
 
-        /* Very Small Screens */
-        @media (max-width: 360px) {
-            .container {
-                padding: 20px 15px;
-            }
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
 
-            h1 {
-                font-size: 17px;
-            }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
 
-            .time-number {
-                font-size: 22px;
-            }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
 
-            .phone-number {
-                font-size: 16px;
-            }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .no-result {
+            text-align: center;
+            color: #999;
+            padding: 1rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">📚</div>
-            <h1>بنك الأسئلة - تراكيب البيانات</h1>
-            <p class="subtitle">Data Structures Question Bank</p>
-        </div>
-
-        <div class="content">
-            <div class="announcement">
-                <div class="announcement-title">
-                    <span>ℹ️</span>
-                    <span>إعلان هام</span>
-                    <span class="status-badge" id="statusBadge">قريباً</span>
-                </div>
-                <p class="announcement-text">
-                    إجابات بنك الأسئلة ستكون متاحة هنا في الموعد المحدد أدناه. يُرجى متابعة العد التنازلي والتواصل معنا في حال وجود أي استفسارات.
-                </p>
+    <div class="top-header">
+        <div class="top-header-container">
+            <div class="instructor-info">
+                <h2>🎓 Eng. Homam Alkrad</h2>
             </div>
-
-            <div class="countdown-section">
-                <div class="countdown-title">الوقت المتبقي حتى الإتاحة</div>
-                <div class="countdown-display" id="countdown">
-                    <div class="time-unit">
-                        <span class="time-number" id="days">00</span>
-                        <span class="time-label">يوم</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="hours">00</span>
-                        <span class="time-label">ساعة</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="minutes">00</span>
-                        <span class="time-label">دقيقة</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="seconds">00</span>
-                        <span class="time-label">ثانية</span>
-                    </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <a href="mailto:alkurdihom@gmail.com">alkurdihom@gmail.com</a>
                 </div>
-                <div class="target-date">
-                    الموعد المحدد: الإثنين 11 نوفمبر 2025 - الساعة 9:00 صباحاً
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <a href="tel:0791089960">0791089960</a>
                 </div>
             </div>
-
-            <div class="contact-section">
-                <div class="contact-title">للاستفسار والتواصل</div>
-                <div class="contact-info">
-                    <div class="phone-number">0791089960</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            © 2025 جميع الحقوق محفوظة
         </div>
     </div>
 
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="TestBankAnswers.html" class="active"> MCQ</a>
+                <a href="essay.html">Essay</a>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search by question number...">
+                <div class="search-result" id="searchResult"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1> MCQ Test Bank Answers</h1>
+            <p>Data Structures - Complete Answer Key</p>
+        </div>
+
+        <div class="table-container">
+            <table id="answersTable">
+                <thead>
+                    <tr>
+                        <th>Question #</th>
+                        <th>Answer</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Eng. Homam Alkrad | Data Structures Course Material</p>
+    </div>
+
     <script>
-        // Set target date: November 11, 2025 at 9:00 AM
-        const targetDate = new Date('2025-11-11T09:00:00').getTime();
+        const answers = {
+            1: "a) True",
+            2: "b) False",
+            3: "b) False",
+            4: "a) True",
+            5: "b) False",
+            6: "a) True",
+            7: "a) True",
+            8: "d) A way to store and organize data",
+            9: "c) How to store and organize the data in memory",
+            10: "a) They enable efficient data organization and manipulation.",
+            11: "b) Traversal",
+            12: "b) Member functions",
+            13: "a) Dangling pointer",
+            14: "c) Function polymorphism",
+            15: "d) struct OR class",
+            16: "b) To create user-defined data types",
+            17: "d) The pointer becomes a dangling pointer",
+            18: "b) To allocate memory only when needed during program execution",
+            19: "b) Allocating memory with new and losing the pointer without calling delete",
+            20: "a) delete a[ ];",
+            21: "d) None of these",
+            22: "c) Any number",
+            23: "d) * ptr",
+            24: "d) None of the above",
+            25: "d) (*S).data",
+            26: "c) A *obj = new A;",
+            27: "a) int* x = new int; *x = 0;",
+            28: "b) int *x = new int; delete x; x = 0;",
+            29: "a) float *p = new number[23];",
+            30: "a) It will not allocate any memory",
+            31: "a) Array",
+            32: "b) Linked List",
+            33: "a) Linear data structure",
+            34: "d) A run-time error.",
+            35: "c) Defining multiple constructors with different sets of parameters",
+            36: "c) The process of combining data and functions into a single unit called class",
+            37: "d) To destruct class objects and release memory",
+            38: "b) Insertions and deletion of elements at any position in the list",
+            39: "a) (*pt).x_center = 10.0;",
+            40: "c) cout << head->next->data;",
+            41: "d) To verify if memory has been successfully allocated",
+            42: "b) When dynamically allocated memory is not freed",
+            43: "b) To allocate memory only when needed during program execution",
+            44: "b) Both data and functions can be either private or public.",
+            45: "a) The scope resolution operator \"::\"",
+            46: "c) *(a + 2)",
+            47: "a) *(x + i) is same as x[i]",
+            48: "b) int* x = new int; delete x;",
+            49: "d) int* x = new int; x = new int;",
+            50: "a) To recognize when the linked list is empty",
+            51: "d) Insertion at the front of the linked list",
+            52: "c) Delete the last element of the list",
+            53: "c) struct a_struct {int a;};",
+            54: "c) 2",
+            55: "a) p1 = a1[0];",
+            56: "a) *p = 75;",
+            57: "c) 6",
+            58: "c) Invalid Statement",
+            59: "b) a1 = 0;",
+            60: "a) array++;",
+            61: "a) Program will not compile",
+            62: "a) 6",
+            63: "c) c",
+            64: "d) pd = 0;",
+            65: "c) 8",
+            66: "c) ptr will hold the address of numbers[1].",
+            67: "a) int i; double* dp = &i;",
+            68: "c) *p1 = array",
+            69: "a) It generates an error on runtime.",
+            70: "b) 0",
+            71: "a) Line 1",
+            72: "a) array++;",
+            73: "d) Line 1 & Line 3",
+            74: "b) q->next->next;",
+            75: "a) 2",
+            76: "b) cout << list->next->data;",
+            77: "c) Address of the second Node",
+            78: "d) Yes, there is a memory leak and a dangle pointer(s)",
+            79: "b) p->data == q->data",
+            80: "b) Prints: 1 3",
+            81: "c) 471123",
+            82: "b) 34711",
+            83: "d) node* temp = new node; temp->data = 55; temp->next = first; first = temp;",
+            84: "b) 11",
+            85: "c) 71123",
+            86: "c) 14",
+            87: "a) 80 80",
+            88: "d) 6",
+            89: "c) a1++"
+        };
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+        function populateTable() {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+            
+            Object.keys(answers).forEach(questionNum => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="q-number">Q${questionNum}</td>
+                    <td class="answer">${answers[questionNum]}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
 
-            if (distance < 0) {
-                // Countdown finished
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
-                
-                document.querySelector('.countdown-title').textContent = 'الإجابات متاحة الآن';
-                document.querySelector('.countdown-section').style.background = '#27ae60';
-                document.getElementById('statusBadge').textContent = 'متاح';
-                document.getElementById('statusBadge').classList.add('available');
-                
+        const searchBox = document.getElementById('searchBox');
+        const searchResult = document.getElementById('searchResult');
+
+        searchBox.addEventListener('input', function() {
+            const searchValue = this.value.trim();
+            
+            if (searchValue === '') {
+                searchResult.classList.remove('show');
                 return;
             }
 
-            // Calculate time units
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const questionNum = parseInt(searchValue);
+            
+            if (answers[questionNum]) {
+                searchResult.innerHTML = `
+                    <div class="search-result-item">
+                        <div class="question-num">Question ${questionNum}</div>
+                        <div class="answer-text">${answers[questionNum]}</div>
+                    </div>
+                `;
+                searchResult.classList.add('show');
+            } else {
+                searchResult.innerHTML = `
+                    <div class="no-result">No answer found for question ${searchValue}</div>
+                `;
+                searchResult.classList.add('show');
+            }
+        });
 
-            // Update display
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-        }
+        document.addEventListener('click', function(e) {
+            if (!searchBox.contains(e.target) && !searchResult.contains(e.target)) {
+                searchResult.classList.remove('show');
+            }
+        });
 
-        // Update countdown immediately and every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        populateTable();
     </script>
 </body>
 </html>
