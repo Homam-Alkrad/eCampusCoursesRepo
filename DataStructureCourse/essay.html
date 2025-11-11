@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Questions - Eng. Homam Alkrad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding-bottom: 50px;
+            position: relative;
+        }
+
+        body::before {
+            content: 'Eng. Homam Alkrad';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 4rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.05);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #2d3561 0%, #3e2a5e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .top-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .instructor-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .question-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1.5rem;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            background: #f8f9ff;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .answer-section {
+            background: #2d2d2d;
+            border-radius: 10px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .answer-label {
+            color: #ffd700;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border: 1px solid #444;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .function {
+            color: #dcdcaa;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            body::before {
+                font-size: 2rem;
+            }
+
+            .top-header {
+                padding: 1rem;
+            }
+
+            .top-header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .instructor-info h2 {
+                font-size: 1.4rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .question-card {
+                padding: 1.5rem;
+            }
+
+            .question-header {
+                font-size: 1.1rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .question-text {
+                font-size: 0.9rem;
+            }
+
+            .code-block {
+                font-size: 0.85rem;
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body::before {
+                font-size: 1.5rem;
+            }
+
+            .instructor-info h2 {
+                font-size: 1.2rem;
+            }
+
+            .contact-item {
+                font-size: 0.85rem;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-header">
+        <div class="top-header-container">
+            <div class="instructor-info">
+                <h2>🎓 Eng. Homam Alkrad</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <a href="mailto:alkurdihom@gmail.com">alkurdihom@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <a href="tel:0791089960">0791089960</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="TestBankAnswers.html">📝 MCQ</a>
+                <a href="essay.html" class="active">📄 Essay</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>📝 Essay Questions & Answers</h1>
+            <p>Data Structures - Coding Problems</p>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q2</div>
+            <div class="question-text">Given the following declaration:
+struct A {
+    int Data;
+};
+struct B {
+    float salary;
+    A foo;
+};
+B *Rec;
+
+Write the needed code to store the value 120 in the member variable "Data" using the variable *Rec.</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>Rec = new B;
+Rec->foo.Data = 120;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q3</div>
+            <div class="question-text">Find and explain the error(s), if any in the following statements:
+struct abc {
+    int x;
+    float y;
+};
+abc s1 = {10};
+abc s2 = {10};
+if (s1 == s2)
+    cout << "they are equal ..." << endl;</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>Error: Cannot compare structs directly using == operator.
+
+Explanation:
+Structs cannot be compared using == operator in C++.
+You must compare individual members:
+
+if (s1.x == s2.x && s1.y == s2.y)
+    cout << "they are equal ..." << endl;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q4</div>
+            <div class="question-text">Write the needed code to add a new node named "temp" at the end of a non-empty singly linked list named "List".</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>Node* temp = new Node;
+temp->data = value;
+temp->next = NULL;
+
+Node* current = List;
+while (current->next != NULL) {
+    current = current->next;
+}
+current->next = temp;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q5</div>
+            <div class="question-text">Write the needed code to move the first node of the non-empty linked-list named "List" to the end of the linked-list.</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>Node* temp = List;
+List = List->next;
+
+Node* current = List;
+while (current->next != NULL) {
+    current = current->next;
+}
+current->next = temp;
+temp->next = NULL;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q6</div>
+            <div class="question-text">Write the needed code to search a nonempty single linked list named "List" to check whether it has data = 10 or not; if it has data = 10, print "Found"; otherwise, print "Not found."</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>Node* current = List;
+bool found = false;
+
+while (current != NULL) {
+    if (current->data == 10) {
+        found = true;
+        break;
+    }
+    current = current->next;
+}
+
+if (found)
+    cout << "Found" << endl;
+else
+    cout << "Not found" << endl;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q7</div>
+            <div class="question-text">Write the needed code to calculate and print the sum of all elements in a non-empty singly linked list named "List".</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>int sum = 0;
+Node* current = List;
+
+while (current != NULL) {
+    sum += current->data;
+    current = current->next;
+}
+
+cout << "Sum = " << sum << endl;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q8</div>
+            <div class="question-text">Write the needed code to display the contents of singly linked list "List".</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>Node* current = List;
+
+while (current != NULL) {
+    cout << current->data << " ";
+    current = current->next;
+}
+cout << endl;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q9</div>
+            <div class="question-text">Write the needed code to move the first node of the non-empty linked-list named "List" to the end of the linked-list.</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>Node* temp = List;
+List = List->next;
+
+Node* current = List;
+while (current->next != NULL) {
+    current = current->next;
+}
+current->next = temp;
+temp->next = NULL;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q10</div>
+            <div class="question-text">Given the following declaration:
+int array[10] = {1,2,3,45,12,17,90,100,16,99,0};
+int *P = array;
+
+Use the pointer P to find and print the smallest element in the array</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>int min = *P;
+
+for (int i = 1; i < 10; i++) {
+    if (*(P + i) < min) {
+        min = *(P + i);
+    }
+}
+
+cout << "Smallest element = " << min << endl;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q11</div>
+            <div class="question-text">Given a single linked-list named L that has at least two nodes in it, write the needed code to split it into two sub-lists named L1 and L2 — one for the front half (L1), and the other for the back half (L2). If the number of elements in L is odd, the extra element should go in the front list (L1).
+
+For example if the linked list (L) = {2, 3, 5, 7, 11} then L1= {2, 3, 5} and L2 = {7, 11}.</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>int count = 0;
+Node* current = L;
+while (current != NULL) {
+    count++;
+    current = current->next;
+}
+
+int mid = (count + 1) / 2;
+
+L1 = L;
+current = L;
+for (int i = 1; i < mid; i++) {
+    current = current->next;
+}
+
+L2 = current->next;
+current->next = NULL;</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-header">Q12</div>
+            <div class="question-text">Given two singly linked-lists named L1 and L2, write the needed code to merge them into a single linked-list named L. The merged list should contain all elements from both L1 and L2.
+
+For example, if the linked list L1 = {2, 3, 5} and L2 = {7, 11} then after merging: L = {2, 3, 5, 7, 11}.</div>
+            <div class="answer-section">
+                <span class="answer-label">💡 Answer:</span>
+                <div class="code-block">
+<pre>L = L1;
+
+Node* current = L1;
+while (current->next != NULL) {
+    current = current->next;
+}
+
+current->next = L2;</pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Eng. Homam Alkrad | Data Structures Course Material</p>
+    </div>
+</body>
+</html>
