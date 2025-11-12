@@ -1706,13 +1706,6 @@ public:
     
     Node* getHead() {
         return head;
-    }{
-        Node* current = head;
-        while (current != nullptr) {
-            Node* temp = current;
-            current = current->next;
-            delete temp;
-        }
     }
 };
 
@@ -2291,4 +2284,5 @@ int main() {
     </script>
 </body>
 </html>
+
 
