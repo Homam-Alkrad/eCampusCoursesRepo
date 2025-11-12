@@ -1528,16 +1528,7 @@ public:
     LinkedList() {
         cout &lt;&lt; "LinkedList constructor called" &lt;&lt; endl;
         head = nullptr;
-    }{
-        cout &lt;&lt; "LinkedList destructor called - cleaning up memory" &lt;&lt; endl;
-        Node* current = head;
-        while (current != nullptr) {
-            Node* temp = current;
-            current = current->next;
-            delete temp;
-        }
-    }
-    
+    }    
     bool isEmpty() {
         return head == nullptr;
     }
@@ -2300,3 +2291,4 @@ int main() {
     </script>
 </body>
 </html>
+
