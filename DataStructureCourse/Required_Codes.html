@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إجابات بنك الأسئلة</title>
+    <title>C++ Code Examples - Eng. Homam Alkrad</title>
     <style>
         * {
             margin: 0;
@@ -13,481 +13,2290 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding-bottom: 50px;
+        }
+
+        body::before {
+            content: 'Eng. Homam Alkrad';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 4rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.05);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #2d3561 0%, #3e2a5e 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .top-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .instructor-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item svg {
+            width: 18px;
+            height: 18px;
+            fill: #fff;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: #667eea;
+            color: white;
         }
 
         .container {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            max-width: 750px;
-            width: 100%;
-            border-top: 4px solid #2c3e50;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .header {
             text-align: center;
-            padding-bottom: 25px;
-            border-bottom: 2px solid #ecf0f1;
-            margin-bottom: 35px;
+            color: white;
+            margin-bottom: 2rem;
         }
 
-        .logo {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 18px;
-            background: #2c3e50;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
         }
 
-        h1 {
-            color: #2c3e50;
-            font-size: 26px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .subtitle {
-            color: #7f8c8d;
-            font-size: 15px;
-            font-weight: normal;
-        }
-
-        .content {
-            margin-bottom: 35px;
-        }
-
-        .announcement {
-            background: #ecf0f1;
-            padding: 25px;
-            border-radius: 6px;
-            border-left: 4px solid #3498db;
-            margin-bottom: 25px;
-        }
-
-        .announcement-title {
-            color: #2c3e50;
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .announcement-text {
-            color: #34495e;
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .countdown-section {
-            background: #2c3e50;
-            padding: 30px 20px;
-            border-radius: 6px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .countdown-title {
-            color: #ecf0f1;
-            font-size: 15px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
             font-weight: 500;
         }
 
-        .countdown-display {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
+        .index-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .time-unit {
-            background: #34495e;
-            padding: 18px 10px;
-            border-radius: 6px;
-        }
-
-        .time-number {
+        .index-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            font-size: 32px;
-            font-weight: bold;
-            display: block;
-            font-family: 'Courier New', monospace;
-            line-height: 1;
-        }
-
-        .time-label {
-            color: #bdc3c7;
-            font-size: 12px;
-            margin-top: 8px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .target-date {
-            color: #95a5a6;
-            font-size: 13px;
-            margin-top: 15px;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        .contact-section {
-            background: #fafbfc;
-            padding: 25px;
-            border-radius: 6px;
-            border: 1px solid #e1e8ed;
-        }
-
-        .contact-title {
-            color: #2c3e50;
-            font-size: 15px;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 12px;
             text-align: center;
         }
 
-        .contact-info {
-            text-align: center;
+        .index-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .phone-number {
-            color: #2c3e50;
-            font-size: 22px;
-            font-weight: bold;
-            direction: ltr;
-            display: inline-block;
-            letter-spacing: 1px;
+        .index-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .index-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-section {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
             font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border: 1px solid #444;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre;
+            color: #d4d4d4;
         }
 
         .footer {
-            margin-top: 35px;
-            padding-top: 18px;
-            border-top: 2px solid #ecf0f1;
             text-align: center;
-            color: #95a5a6;
-            font-size: 13px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 5px 10px;
-            background: #e74c3c;
             color: white;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            padding: 2rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .status-badge.available {
-            background: #27ae60;
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
-        /* Tablet Screens */
         @media (max-width: 768px) {
-            .container {
-                padding: 35px 25px;
+            body::before {
+                font-size: 2rem;
             }
 
-            h1 {
-                font-size: 22px;
+            .header h1 {
+                font-size: 2rem;
             }
 
-            .subtitle {
-                font-size: 14px;
+            .index-buttons {
+                grid-template-columns: 1fr;
             }
 
-            .logo {
-                width: 60px;
-                height: 60px;
-                font-size: 30px;
-            }
-
-            .announcement {
-                padding: 20px;
-            }
-
-            .announcement-title {
-                font-size: 16px;
-            }
-
-            .announcement-text {
-                font-size: 15px;
-            }
-
-            .countdown-section {
-                padding: 25px 15px;
-            }
-
-            .countdown-display {
-                gap: 10px;
-            }
-
-            .time-unit {
-                padding: 15px 8px;
-            }
-
-            .time-number {
-                font-size: 28px;
-            }
-
-            .time-label {
-                font-size: 11px;
-            }
-
-            .phone-number {
-                font-size: 20px;
-            }
-
-            .contact-section {
-                padding: 20px;
+            .code-block {
+                font-size: 0.85rem;
+                padding: 1rem;
             }
         }
+    
 
-        /* Mobile Screens */
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 25px 18px;
-                border-radius: 6px;
-            }
-
-            h1 {
-                font-size: 19px;
-            }
-
-            .subtitle {
-                font-size: 13px;
-            }
-
-            .logo {
-                width: 55px;
-                height: 55px;
-                font-size: 28px;
-                margin-bottom: 15px;
-            }
-
-            .header {
-                padding-bottom: 20px;
-                margin-bottom: 25px;
-            }
-
-            .announcement {
-                padding: 18px;
-                margin-bottom: 20px;
-            }
-
-            .announcement-title {
-                font-size: 15px;
-                gap: 6px;
-            }
-
-            .announcement-text {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-
-            .countdown-section {
-                padding: 20px 12px;
-                margin-bottom: 20px;
-            }
-
-            .countdown-title {
-                font-size: 13px;
-                margin-bottom: 15px;
-            }
-
-            .countdown-display {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .time-unit {
-                padding: 12px 6px;
-            }
-
-            .time-number {
-                font-size: 24px;
-            }
-
-            .time-label {
-                font-size: 10px;
-                margin-top: 6px;
-            }
-
-            .target-date {
-                font-size: 12px;
-                margin-top: 12px;
-                padding: 0 5px;
-            }
-
-            .contact-section {
-                padding: 18px;
-            }
-
-            .contact-title {
-                font-size: 14px;
-                margin-bottom: 10px;
-            }
-
-            .phone-number {
-                font-size: 18px;
-                letter-spacing: 0.5px;
-            }
-
-            .footer {
-                margin-top: 25px;
-                padding-top: 15px;
-                font-size: 12px;
-            }
-
-            .status-badge {
-                padding: 4px 8px;
-                font-size: 10px;
-            }
+        /* Enhanced Code Styling */
+        .code-block pre {
+            margin: 0;
+            white-space: pre;
+            color: #d4d4d4;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            line-height: 1.6;
         }
 
-        /* Very Small Screens */
-        @media (max-width: 360px) {
-            .container {
-                padding: 20px 15px;
-            }
+        /* Manual syntax highlighting - we'll apply these classes manually */
+        .code-block pre .kw { color: #569cd6; font-weight: bold; }
+        .code-block pre .type { color: #4ec9b0; font-weight: bold; }
+        .code-block pre .func { color: #dcdcaa; }
+        .code-block pre .var { color: #9cdcfe; }
+        .code-block pre .str { color: #ce9178; }
+        .code-block pre .num { color: #b5cea8; }
+        .code-block pre .prep { color: #c586c0; }
 
-            h1 {
-                font-size: 17px;
-            }
+        /* Syntax Highlighting */
+        .keyword {
+            color: #569cd6 !important;
+            font-weight: bold;
+        }
 
-            .time-number {
-                font-size: 22px;
-            }
+        .class-name {
+            color: #4ec9b0 !important;
+            font-weight: bold;
+        }
 
-            .phone-number {
-                font-size: 16px;
-            }
+        .function-name {
+            color: #dcdcaa !important;
+        }
+
+        .variable {
+            color: #9cdcfe !important;
+        }
+
+        .string-literal {
+            color: #ce9178 !important;
+        }
+
+        .number {
+            color: #b5cea8 !important;
+        }
+
+        .preprocessor {
+            color: #c586c0 !important;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">📚</div>
-            <h1>الأكواد المطلوبة - تراكيب البيانات</h1>
-            <p class="subtitle">Data Structures Required Codes</p>
-        </div>
-
-        <div class="content">
-            <div class="announcement" style="background: #e8f5e9; border-left-color: #27ae60;">
-                <div class="announcement-title" style="color: #2c3e50;">
-                    <span>💻</span>
-                    <span>محتوى الامتحان النصفي</span>
-                    <span class="status-badge" id="statusBadge">قريباً</span>
-                </div>
-                <p class="announcement-text">
-                    هنا ستكون جميع الأكواد المطلوبة من مادة الميد.
-                </p>
+    <div class="top-header">
+        <div class="top-header-container">
+            <div class="instructor-info">
+                <h2> Eng. Homam Alkrad</h2>
             </div>
-
-            <div class="countdown-section">
-                <div class="countdown-title">الوقت المتبقي حتى الإتاحة</div>
-                <div class="countdown-display" id="countdown">
-                    <div class="time-unit">
-                        <span class="time-number" id="days">00</span>
-                        <span class="time-label">يوم</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="hours">00</span>
-                        <span class="time-label">ساعة</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="minutes">00</span>
-                        <span class="time-label">دقيقة</span>
-                    </div>
-                    <div class="time-unit">
-                        <span class="time-number" id="seconds">00</span>
-                        <span class="time-label">ثانية</span>
-                    </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <a href="/cdn-cgi/l/email-protection#22434e495750464b4a4d4f62454f434b4e0c414d4f"><span class="__cf_email__" data-cfemail="90f1fcfbe5e2f4f9f8fffdd0f7fdf1f9fcbef3fffd">[email&#160;protected]</span></a>
                 </div>
-                <div class="target-date">
-                    الموعد المحدد: الإثنين 11 نوفمبر 2025 - الساعة 9:00 صباحاً
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <a href="tel:0791089960">0791089960</a>
                 </div>
             </div>
-
-            <div class="contact-section">
-                <div class="contact-title">للاستفسار والتواصل</div>
-                <div class="contact-info">
-                    <div class="phone-number">0791089960</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            © 2025 جميع الحقوق محفوظة
         </div>
     </div>
 
-    <script>
-        // Set target date: November 11, 2025 at 9:00 AM
-        const targetDate = new Date('2025-11-12T09:00:00').getTime();
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="TestBankAnswers.html"> MCQ</a>
+                <a href="essay.html"> Essay</a>
+                <a href="index.html" class="active"> Code Examples</a>
+            </div>
+        </div>
+    </nav>
 
-            if (distance < 0) {
-                // Countdown finished
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
+    <div class="container">
+        <div class="header">
+            <h1> C++ Code Examples</h1>
+            <p>Complete Implementation Guide</p>
+        </div>
+
+        <div class="index-section">
+            <div class="index-title"> Table of Contents</div>
+            <div class="index-buttons">
+                <div class="index-button" onclick="showSection('struct')">
+                     Struct & Pointers & Array
+                </div>
+                <div class="index-button" onclick="showSection('oop')">
+                     Object Oriented Programming
+                </div>
+                <div class="index-button" onclick="showSection('linked')">
+                     Linked List Data Structure
+                </div>
+            </div>
+        </div>
+
+        <div id="struct-section" class="code-section">
+            <div class="section-header">
+                <span> Struct & Pointers & Array</span>
+                <button class="close-btn" onclick="closeSection('struct')"> Close</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Type {
+    string quiz;
+    string mid;
+    string final;
+};
+
+struct Exam {
+    string name;
+    Type type;
+    double mark;
+};
+
+struct Student {
+    int id;
+    string name;
+    Exam exam;
+};
+
+void printStudents(Student* arr, int size) {
+    cout &lt;&lt; "\n=== Student Records ===" &lt;&lt; endl;
+    for (int i = 0; i &lt; size; i++) {
+        cout &lt;&lt; "Student ID: " &lt;&lt; (arr + i)-&gt;id &lt;&lt; endl;
+        cout &lt;&lt; "Name: " &lt;&lt; (arr + i)-&gt;name &lt;&lt; endl;
+        cout &lt;&lt; "Exam: " &lt;&lt; (arr + i)-&gt;exam.name &lt;&lt; endl;
+        cout &lt;&lt; "Type: " &lt;&lt; (arr + i)-&gt;exam.type.mid &lt;&lt; endl;
+        cout &lt;&lt; "Mark: " &lt;&lt; (arr + i)-&gt;exam.mark &lt;&lt; endl;
+        cout &lt;&lt; "-------------------" &lt;&lt; endl;
+    }
+}
+
+void searchStudent(Student* arr, int size, int searchId) {
+    bool found = false;
+    for (int i = 0; i &lt; size; i++) {
+        if ((arr + i)-&gt;id == searchId) {
+            cout &lt;&lt; "\n=== Student Found ===" &lt;&lt; endl;
+            cout &lt;&lt; "ID: " &lt;&lt; (arr + i)-&gt;id &lt;&lt; endl;
+            cout &lt;&lt; "Name: " &lt;&lt; (arr + i)-&gt;name &lt;&lt; endl;
+            cout &lt;&lt; "Mark: " &lt;&lt; (arr + i)-&gt;exam.mark &lt;&lt; endl;
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout &lt;&lt; "Student with ID " &lt;&lt; searchId &lt;&lt; " not found." &lt;&lt; endl;
+    }
+}
+
+void findMaxMark(Student* arr, int size) {
+    double maxMark = (arr + 0)-&gt;exam.mark;
+    int maxIndex = 0;
+    
+    for (int i = 1; i &lt; size; i++) {
+        if ((arr + i)-&gt;exam.mark &gt; maxMark) {
+            maxMark = (arr + i)-&gt;exam.mark;
+            maxIndex = i;
+        }
+    }
+    
+    cout &lt;&lt; "\n=== Student with Maximum Mark ===" &lt;&lt; endl;
+    cout &lt;&lt; "Name: " &lt;&lt; (arr + maxIndex)-&gt;name &lt;&lt; endl;
+    cout &lt;&lt; "Mark: " &lt;&lt; maxMark &lt;&lt; endl;
+}
+
+int main() {
+    Student students[50];
+    
+    students[0].id = 1;
+    students[0].name = "Homam";
+    students[0].exam.name = "Data Structure";
+    students[0].exam.type.mid = "Mid";
+    students[0].exam.mark = 85.5;
+    
+    students[1].id = 2;
+    students[1].name = "Ahmad";
+    students[1].exam.name = "Data Structure";
+    students[1].exam.type.mid = "Mid";
+    students[1].exam.mark = 92.0;
+    
+    students[2].id = 3;
+    students[2].name = "Qasem";
+    students[2].exam.name = "Data Structure";
+    students[2].exam.type.mid = "Mid";
+    students[2].exam.mark = 88.5;
+    
+    Student* ptr = students;
+    
+    printStudents(ptr, 3);
+    searchStudent(ptr, 3, 2);
+    findMaxMark(ptr, 3);
+    
+    cout &lt;&lt; "\n=== Dynamic Array Example ===" &lt;&lt; endl;
+    int size = 3;
+    Student* dynamicArr = new Student[size];
+    
+    dynamicArr[0] = students[0];
+    dynamicArr[1] = students[1];
+    dynamicArr[2] = students[2];
+    
+    findMaxMark(dynamicArr, size);
+    
+    delete[] dynamicArr;
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="oop-section" class="code-section">
+            <div class="section-header">
+                <span> Object Oriented Programming</span>
+                <button class="close-btn" onclick="closeSection('oop')"> Close</button>
+            </div>
+            <div class="index-buttons">
+                <div class="index-button" onclick="showSubSection('class-object')">
+                     Class & Object
+                </div>
+                <div class="index-button" onclick="showSubSection('constructor')">
+                     Constructor
+                </div>
+                <div class="index-button" onclick="showSubSection('destructor')">
+                     Destructor
+                </div>
+                <div class="index-button" onclick="showSubSection('encapsulation')">
+                     Access Modifiers & Encapsulation
+                </div>
+                <div class="index-button" onclick="showSubSection('getters-setters')">
+                     Getters & Setters
+                </div>
+                <div class="index-button" onclick="showSubSection('member-functions')">
+                     Member Functions Outside Class
+                </div>
+            </div>
+        </div>
+
+        <div id="class-object-section" class="code-section">
+            <div class="section-header">
+                <span> Class & Object</span>
+                <button class="close-btn" onclick="closeSubSection('class-object')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+public:
+    int id;
+    string name;
+    double gpa;
+    
+    void display() {
+        cout &lt;&lt; "Student ID: " &lt;&lt; id &lt;&lt; endl;
+        cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+        cout &lt;&lt; "GPA: " &lt;&lt; gpa &lt;&lt; endl;
+    }
+};
+
+class Employee {
+public:
+    int empId;
+    string empName;
+    double salary;
+    
+    void showInfo() {
+        cout &lt;&lt; "Employee ID: " &lt;&lt; empId &lt;&lt; endl;
+        cout &lt;&lt; "Name: " &lt;&lt; empName &lt;&lt; endl;
+        cout &lt;&lt; "Salary: $" &lt;&lt; salary &lt;&lt; endl;
+    }
+};
+
+class BankAccount {
+public:
+    int accountNumber;
+    string holderName;
+    double balance;
+    
+    void printAccount() {
+        cout &lt;&lt; "Account Number: " &lt;&lt; accountNumber &lt;&lt; endl;
+        cout &lt;&lt; "Holder: " &lt;&lt; holderName &lt;&lt; endl;
+        cout &lt;&lt; "Balance: $" &lt;&lt; balance &lt;&lt; endl;
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Class & Object Demo ===" &lt;&lt; endl;
+    
+    Student s1;
+    s1.id = 101;
+    s1.name = "Homam";
+    s1.gpa = 3.8;
+    
+    cout &lt;&lt; "\nStudent Object:" &lt;&lt; endl;
+    s1.display();
+    
+    Employee e1;
+    e1.empId = 201;
+    e1.empName = "Ahmad";
+    e1.salary = 5000.0;
+    
+    cout &lt;&lt; "\nEmployee Object:" &lt;&lt; endl;
+    e1.showInfo();
+    
+    BankAccount acc1;
+    acc1.accountNumber = 1001;
+    acc1.holderName = "Qasem";
+    acc1.balance = 10000.0;
+    
+    cout &lt;&lt; "\nBankAccount Object:" &lt;&lt; endl;
+    acc1.printAccount();
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="constructor-section" class="code-section">
+            <div class="section-header">
+                <span> Constructor</span>
+                <button class="close-btn" onclick="closeSubSection('constructor')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+private:
+    int id;
+    string name;
+    double gpa;
+    
+public:
+    Student() {
+        cout &lt;&lt; "Default constructor called" &lt;&lt; endl;
+        id = 0;
+        name = "Unknown";
+        gpa = 0.0;
+    }
+    
+    Student(int i, string n) {
+        cout &lt;&lt; "Constructor with 2 parameters called" &lt;&lt; endl;
+        id = i;
+        name = n;
+        gpa = 0.0;
+    }
+    
+    Student(int i, string n, double g) {
+        cout &lt;&lt; "Constructor with 3 parameters called" &lt;&lt; endl;
+        id = i;
+        name = n;
+        gpa = g;
+    }
+    
+    void display() {
+        cout &lt;&lt; "ID: " &lt;&lt; id &lt;&lt; ", Name: " &lt;&lt; name &lt;&lt; ", GPA: " &lt;&lt; gpa &lt;&lt; endl;
+    }
+};
+
+class Employee {
+private:
+    int empId;
+    string empName;
+    double salary;
+    
+public:
+    Employee() {
+        cout &lt;&lt; "Employee default constructor called" &lt;&lt; endl;
+        empId = 0;
+        empName = "Unknown";
+        salary = 0.0;
+    }
+    
+    Employee(int id, string name, double sal) {
+        cout &lt;&lt; "Employee parameterized constructor called" &lt;&lt; endl;
+        empId = id;
+        empName = name;
+        salary = sal;
+    }
+    
+    void display() {
+        cout &lt;&lt; "ID: " &lt;&lt; empId &lt;&lt; ", Name: " &lt;&lt; empName &lt;&lt; ", Salary: $" &lt;&lt; salary &lt;&lt; endl;
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Constructor Demo ===" &lt;&lt; endl;
+    
+    cout &lt;&lt; "\nCreating Student objects:" &lt;&lt; endl;
+    Student s1;
+    Student s2(101, "Homam");
+    Student s3(102, "Ahmad", 3.8);
+    
+    cout &lt;&lt; "\nStudent Information:" &lt;&lt; endl;
+    s1.display();
+    s2.display();
+    s3.display();
+    
+    cout &lt;&lt; "\nCreating Employee objects:" &lt;&lt; endl;
+    Employee e1;
+    Employee e2(201, "Qasem", 5000.0);
+    
+    cout &lt;&lt; "\nEmployee Information:" &lt;&lt; endl;
+    e1.display();
+    e2.display();
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="destructor-section" class="code-section">
+            <div class="section-header">
+                <span> Destructor</span>
+                <button class="close-btn" onclick="closeSubSection('destructor')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+private:
+    int id;
+    string name;
+    
+public:
+    Student() {
+        cout &lt;&lt; "Constructor: Student object created" &lt;&lt; endl;
+        id = 0;
+        name = "Unknown";
+    }
+    
+    Student(int i, string n) {
+        cout &lt;&lt; "Constructor: Student " &lt;&lt; n &lt;&lt; " created" &lt;&lt; endl;
+        id = i;
+        name = n;
+    }
+    
+    ~Student() {
+        cout &lt;&lt; "Destructor: Student " &lt;&lt; name &lt;&lt; " destroyed" &lt;&lt; endl;
+    }
+    
+    void display() {
+        cout &lt;&lt; "Student ID: " &lt;&lt; id &lt;&lt; ", Name: " &lt;&lt; name &lt;&lt; endl;
+    }
+};
+
+class Employee {
+private:
+    int empId;
+    string empName;
+    
+public:
+    Employee(int id, string name) {
+        cout &lt;&lt; "Constructor: Employee " &lt;&lt; name &lt;&lt; " hired" &lt;&lt; endl;
+        empId = id;
+        empName = name;
+    }
+    
+    ~Employee() {
+        cout &lt;&lt; "Destructor: Employee " &lt;&lt; empName &lt;&lt; " terminated" &lt;&lt; endl;
+    }
+    
+    void display() {
+        cout &lt;&lt; "Employee ID: " &lt;&lt; empId &lt;&lt; ", Name: " &lt;&lt; empName &lt;&lt; endl;
+    }
+};
+
+class BankAccount {
+private:
+    int accountNumber;
+    string holderName;
+    
+public:
+    BankAccount(int acc, string name) {
+        cout &lt;&lt; "Constructor: Account " &lt;&lt; acc &lt;&lt; " opened for " &lt;&lt; name &lt;&lt; endl;
+        accountNumber = acc;
+        holderName = name;
+    }
+    
+    ~BankAccount() {
+        cout &lt;&lt; "Destructor: Account " &lt;&lt; accountNumber &lt;&lt; " closed" &lt;&lt; endl;
+    }
+    
+    void display() {
+        cout &lt;&lt; "Account: " &lt;&lt; accountNumber &lt;&lt; ", Holder: " &lt;&lt; holderName &lt;&lt; endl;
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Destructor Demo ===" &lt;&lt; endl;
+    
+    cout &lt;&lt; "\n--- Creating objects ---" &lt;&lt; endl;
+    Student s1(101, "Homam");
+    Employee e1(201, "Ahmad");
+    BankAccount acc1(1001, "Qasem");
+    
+    cout &lt;&lt; "\n--- Displaying information ---" &lt;&lt; endl;
+    s1.display();
+    e1.display();
+    acc1.display();
+    
+    cout &lt;&lt; "\n--- Program ending (destructors will be called) ---" &lt;&lt; endl;
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="encapsulation-section" class="code-section">
+            <div class="section-header">
+                <span> Access Modifiers & Encapsulation</span>
+                <button class="close-btn" onclick="closeSubSection('encapsulation')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+private:
+    int id;
+    string name;
+    double gpa;
+    
+public:
+    Student(int i, string n, double g) {
+        id = i;
+        name = n;
+        gpa = g;
+    }
+    
+    void setGpa(double g) {
+        if (g >= 0.0 && g <= 4.0) {
+            gpa = g;
+            cout &lt;&lt; "GPA updated successfully" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Invalid GPA! Must be between 0.0 and 4.0" &lt;&lt; endl;
+        }
+    }
+    
+    double getGpa() {
+        return gpa;
+    }
+    
+    void display() {
+        cout &lt;&lt; "ID: " &lt;&lt; id &lt;&lt; ", Name: " &lt;&lt; name &lt;&lt; ", GPA: " &lt;&lt; gpa &lt;&lt; endl;
+    }
+};
+
+class BankAccount {
+private:
+    int accountNumber;
+    string holderName;
+    double balance;
+    
+public:
+    BankAccount(int acc, string name, double bal) {
+        accountNumber = acc;
+        holderName = name;
+        balance = bal;
+    }
+    
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout &lt;&lt; "Deposited: $" &lt;&lt; amount &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Invalid deposit amount!" &lt;&lt; endl;
+        }
+    }
+    
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            cout &lt;&lt; "Withdrawn: $" &lt;&lt; amount &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Invalid withdrawal! Check amount and balance." &lt;&lt; endl;
+        }
+    }
+    
+    double getBalance() {
+        return balance;
+    }
+    
+    void display() {
+        cout &lt;&lt; "Account: " &lt;&lt; accountNumber &lt;&lt; ", Holder: " &lt;&lt; holderName;
+        cout &lt;&lt; ", Balance: $" &lt;&lt; balance &lt;&lt; endl;
+    }
+};
+
+class Employee {
+private:
+    int empId;
+    string empName;
+    double salary;
+    
+protected:
+    string department;
+    
+public:
+    Employee(int id, string name, double sal, string dept) {
+        empId = id;
+        empName = name;
+        salary = sal;
+        department = dept;
+    }
+    
+    void setSalary(double sal) {
+        if (sal >= 0) {
+            salary = sal;
+            cout &lt;&lt; "Salary updated to: $" &lt;&lt; salary &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Invalid salary!" &lt;&lt; endl;
+        }
+    }
+    
+    double getSalary() {
+        return salary;
+    }
+    
+    void display() {
+        cout &lt;&lt; "ID: " &lt;&lt; empId &lt;&lt; ", Name: " &lt;&lt; empName;
+        cout &lt;&lt; ", Salary: $" &lt;&lt; salary &lt;&lt; ", Dept: " &lt;&lt; department &lt;&lt; endl;
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Access Modifiers & Encapsulation Demo ===" &lt;&lt; endl;
+    
+    Student s1(101, "Homam", 3.8);
+    cout &lt;&lt; "\nStudent created:" &lt;&lt; endl;
+    s1.display();
+    
+    cout &lt;&lt; "\nTrying to set valid GPA:" &lt;&lt; endl;
+    s1.setGpa(3.9);
+    s1.display();
+    
+    cout &lt;&lt; "\nTrying to set invalid GPA:" &lt;&lt; endl;
+    s1.setGpa(5.0);
+    
+    BankAccount acc1(1001, "Ahmad", 5000.0);
+    cout &lt;&lt; "\n\nBank Account created:" &lt;&lt; endl;
+    acc1.display();
+    
+    cout &lt;&lt; "\nPerforming valid transactions:" &lt;&lt; endl;
+    acc1.deposit(2000.0);
+    acc1.withdraw(1000.0);
+    cout &lt;&lt; "Current Balance: $" &lt;&lt; acc1.getBalance() &lt;&lt; endl;
+    
+    cout &lt;&lt; "\nTrying invalid withdrawal:" &lt;&lt; endl;
+    acc1.withdraw(10000.0);
+    
+    Employee e1(201, "Qasem", 5000.0, "IT");
+    cout &lt;&lt; "\n\nEmployee created:" &lt;&lt; endl;
+    e1.display();
+    
+    cout &lt;&lt; "\nUpdating salary:" &lt;&lt; endl;
+    e1.setSalary(5500.0);
+    e1.display();
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="getters-setters-section" class="code-section">
+            <div class="section-header">
+                <span> Getters & Setters</span>
+                <button class="close-btn" onclick="closeSubSection('getters-setters')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+private:
+    int id;
+    string name;
+    double gpa;
+    
+public:
+    Student() {
+        id = 0;
+        name = "";
+        gpa = 0.0;
+    }
+    
+    void setId(int i) {
+        id = i;
+    }
+    
+    void setName(string n) {
+        name = n;
+    }
+    
+    void setGpa(double g) {
+        gpa = g;
+    }
+    
+    int getId() {
+        return id;
+    }
+    
+    string getName() {
+        return name;
+    }
+    
+    double getGpa() {
+        return gpa;
+    }
+    
+    void display() {
+        cout &lt;&lt; "ID: " &lt;&lt; id &lt;&lt; ", Name: " &lt;&lt; name &lt;&lt; ", GPA: " &lt;&lt; gpa &lt;&lt; endl;
+    }
+};
+
+class Employee {
+private:
+    int empId;
+    string empName;
+    double salary;
+    string department;
+    
+public:
+    Employee() {
+        empId = 0;
+        empName = "";
+        salary = 0.0;
+        department = "";
+    }
+    
+    void setEmpId(int id) {
+        empId = id;
+    }
+    
+    void setEmpName(string name) {
+        empName = name;
+    }
+    
+    void setSalary(double sal) {
+        salary = sal;
+    }
+    
+    void setDepartment(string dept) {
+        department = dept;
+    }
+    
+    int getEmpId() {
+        return empId;
+    }
+    
+    string getEmpName() {
+        return empName;
+    }
+    
+    double getSalary() {
+        return salary;
+    }
+    
+    string getDepartment() {
+        return department;
+    }
+    
+    void display() {
+        cout &lt;&lt; "ID: " &lt;&lt; empId &lt;&lt; ", Name: " &lt;&lt; empName;
+        cout &lt;&lt; ", Salary: $" &lt;&lt; salary &lt;&lt; ", Dept: " &lt;&lt; department &lt;&lt; endl;
+    }
+};
+
+class BankAccount {
+private:
+    int accountNumber;
+    string holderName;
+    double balance;
+    
+public:
+    BankAccount() {
+        accountNumber = 0;
+        holderName = "";
+        balance = 0.0;
+    }
+    
+    void setAccountNumber(int acc) {
+        accountNumber = acc;
+    }
+    
+    void setHolderName(string name) {
+        holderName = name;
+    }
+    
+    void setBalance(double bal) {
+        balance = bal;
+    }
+    
+    int getAccountNumber() {
+        return accountNumber;
+    }
+    
+    string getHolderName() {
+        return holderName;
+    }
+    
+    double getBalance() {
+        return balance;
+    }
+    
+    void display() {
+        cout &lt;&lt; "Account: " &lt;&lt; accountNumber &lt;&lt; ", Holder: " &lt;&lt; holderName;
+        cout &lt;&lt; ", Balance: $" &lt;&lt; balance &lt;&lt; endl;
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Getters & Setters Demo ===" &lt;&lt; endl;
+    
+    Student s1;
+    s1.setId(101);
+    s1.setName("Homam");
+    s1.setGpa(3.8);
+    
+    cout &lt;&lt; "\nStudent Information:" &lt;&lt; endl;
+    cout &lt;&lt; "ID: " &lt;&lt; s1.getId() &lt;&lt; endl;
+    cout &lt;&lt; "Name: " &lt;&lt; s1.getName() &lt;&lt; endl;
+    cout &lt;&lt; "GPA: " &lt;&lt; s1.getGpa() &lt;&lt; endl;
+    s1.display();
+    
+    Employee e1;
+    e1.setEmpId(201);
+    e1.setEmpName("Ahmad");
+    e1.setSalary(5000.0);
+    e1.setDepartment("IT");
+    
+    cout &lt;&lt; "\nEmployee Information:" &lt;&lt; endl;
+    cout &lt;&lt; "ID: " &lt;&lt; e1.getEmpId() &lt;&lt; endl;
+    cout &lt;&lt; "Name: " &lt;&lt; e1.getEmpName() &lt;&lt; endl;
+    cout &lt;&lt; "Salary: $" &lt;&lt; e1.getSalary() &lt;&lt; endl;
+    cout &lt;&lt; "Department: " &lt;&lt; e1.getDepartment() &lt;&lt; endl;
+    e1.display();
+    
+    BankAccount acc1;
+    acc1.setAccountNumber(1001);
+    acc1.setHolderName("Qasem");
+    acc1.setBalance(10000.0);
+    
+    cout &lt;&lt; "\nBank Account Information:" &lt;&lt; endl;
+    cout &lt;&lt; "Account Number: " &lt;&lt; acc1.getAccountNumber() &lt;&lt; endl;
+    cout &lt;&lt; "Holder Name: " &lt;&lt; acc1.getHolderName() &lt;&lt; endl;
+    cout &lt;&lt; "Balance: $" &lt;&lt; acc1.getBalance() &lt;&lt; endl;
+    acc1.display();
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="member-functions-section" class="code-section">
+            <div class="section-header">
+                <span> Member Functions Outside Class</span>
+                <button class="close-btn" onclick="closeSubSection('member-functions')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Student {
+private:
+    int id;
+    string name;
+    double gpa;
+    
+public:
+    Student(int i, string n, double g);
+    void display();
+    void calculateHonors();
+    double getGrade();
+};
+
+Student::Student(int i, string n, double g) {
+    id = i;
+    name = n;
+    gpa = g;
+}
+
+void Student::display() {
+    cout &lt;&lt; "Student ID: " &lt;&lt; id &lt;&lt; endl;
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; endl;
+    cout &lt;&lt; "GPA: " &lt;&lt; gpa &lt;&lt; endl;
+}
+
+void Student::calculateHonors() {
+    if (gpa >= 3.8) {
+        cout &lt;&lt; name &lt;&lt; " - High Honors" &lt;&lt; endl;
+    } else if (gpa >= 3.5) {
+        cout &lt;&lt; name &lt;&lt; " - Honors" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; name &lt;&lt; " - Regular Standing" &lt;&lt; endl;
+    }
+}
+
+double Student::getGrade() {
+    return gpa;
+}
+
+class Employee {
+private:
+    int empId;
+    string empName;
+    double salary;
+    int yearsOfService;
+    
+public:
+    Employee(int id, string name, double sal, int years);
+    void display();
+    void calculateBonus();
+    void giveRaise(double percentage);
+    double getTotalCompensation();
+};
+
+Employee::Employee(int id, string name, double sal, int years) {
+    empId = id;
+    empName = name;
+    salary = sal;
+    yearsOfService = years;
+}
+
+void Employee::display() {
+    cout &lt;&lt; "Employee ID: " &lt;&lt; empId &lt;&lt; endl;
+    cout &lt;&lt; "Name: " &lt;&lt; empName &lt;&lt; endl;
+    cout &lt;&lt; "Salary: $" &lt;&lt; salary &lt;&lt; endl;
+    cout &lt;&lt; "Years of Service: " &lt;&lt; yearsOfService &lt;&lt; endl;
+}
+
+void Employee::calculateBonus() {
+    double bonus = salary * 0.10 * yearsOfService;
+    cout &lt;&lt; "Annual Bonus for " &lt;&lt; empName &lt;&lt; ": $" &lt;&lt; bonus &lt;&lt; endl;
+}
+
+void Employee::giveRaise(double percentage) {
+    double raise = salary * (percentage / 100.0);
+    salary += raise;
+    cout &lt;&lt; "Raise of " &lt;&lt; percentage &lt;&lt; "% applied" &lt;&lt; endl;
+    cout &lt;&lt; "New Salary: $" &lt;&lt; salary &lt;&lt; endl;
+}
+
+double Employee::getTotalCompensation() {
+    return salary + (salary * 0.10 * yearsOfService);
+}
+
+class BankAccount {
+private:
+    int accountNumber;
+    string holderName;
+    double balance;
+    double interestRate;
+    
+public:
+    BankAccount(int acc, string name, double bal, double rate);
+    void display();
+    void deposit(double amount);
+    void withdraw(double amount);
+    void applyInterest();
+    double getBalance();
+};
+
+BankAccount::BankAccount(int acc, string name, double bal, double rate) {
+    accountNumber = acc;
+    holderName = name;
+    balance = bal;
+    interestRate = rate;
+}
+
+void BankAccount::display() {
+    cout &lt;&lt; "Account Number: " &lt;&lt; accountNumber &lt;&lt; endl;
+    cout &lt;&lt; "Holder Name: " &lt;&lt; holderName &lt;&lt; endl;
+    cout &lt;&lt; "Balance: $" &lt;&lt; balance &lt;&lt; endl;
+    cout &lt;&lt; "Interest Rate: " &lt;&lt; interestRate &lt;&lt; "%" &lt;&lt; endl;
+}
+
+void BankAccount::deposit(double amount) {
+    balance += amount;
+    cout &lt;&lt; "Deposited: $" &lt;&lt; amount &lt;&lt; endl;
+    cout &lt;&lt; "New Balance: $" &lt;&lt; balance &lt;&lt; endl;
+}
+
+void BankAccount::withdraw(double amount) {
+    if (amount <= balance) {
+        balance -= amount;
+        cout &lt;&lt; "Withdrawn: $" &lt;&lt; amount &lt;&lt; endl;
+        cout &lt;&lt; "New Balance: $" &lt;&lt; balance &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Insufficient funds!" &lt;&lt; endl;
+    }
+}
+
+void BankAccount::applyInterest() {
+    double interest = balance * (interestRate / 100.0);
+    balance += interest;
+    cout &lt;&lt; "Interest Applied: $" &lt;&lt; interest &lt;&lt; endl;
+    cout &lt;&lt; "New Balance: $" &lt;&lt; balance &lt;&lt; endl;
+}
+
+double BankAccount::getBalance() {
+    return balance;
+}
+
+int main() {
+    cout &lt;&lt; "=== Member Functions Outside Class Demo ===" &lt;&lt; endl;
+    
+    Student s1(101, "Homam", 3.9);
+    cout &lt;&lt; "\nStudent Information:" &lt;&lt; endl;
+    s1.display();
+    s1.calculateHonors();
+    
+    Student s2(102, "Ahmad", 3.6);
+    cout &lt;&lt; "\nStudent Information:" &lt;&lt; endl;
+    s2.display();
+    s2.calculateHonors();
+    
+    Employee e1(201, "Qasem", 5000.0, 3);
+    cout &lt;&lt; "\n\nEmployee Information:" &lt;&lt; endl;
+    e1.display();
+    e1.calculateBonus();
+    cout &lt;&lt; "Total Compensation: $" &lt;&lt; e1.getTotalCompensation() &lt;&lt; endl;
+    
+    cout &lt;&lt; "\nGiving raise:" &lt;&lt; endl;
+    e1.giveRaise(10);
+    
+    BankAccount acc1(1001, "Mohammad", 10000.0, 5.0);
+    cout &lt;&lt; "\n\nBank Account Information:" &lt;&lt; endl;
+    acc1.display();
+    
+    cout &lt;&lt; "\nPerforming transactions:" &lt;&lt; endl;
+    acc1.deposit(2000.0);
+    acc1.withdraw(1500.0);
+    acc1.applyInterest();
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="linked-section" class="code-section">
+            <div class="section-header">
+                <span> Linked List Data Structure</span>
+                <button class="close-btn" onclick="closeSection('linked')"> Close</button>
+            </div>
+            <div class="index-buttons">
+                <div class="index-button" onclick="showSubSection('node-class')">
+                     Node Class
+                </div>
+                <div class="index-button" onclick="showSubSection('linkedlist-class')">
+                     Linked List Class
+                </div>
+                <div class="index-button" onclick="showSubSection('create-display')">
+                     Create & Display
+                </div>
+                <div class="index-button" onclick="showSubSection('search-sum-count')">
+                     Search, Sum & Count
+                </div>
+                <div class="index-button" onclick="showSubSection('insertions')">
+                     Insertions (First, Last, Position)
+                </div>
                 
-                document.querySelector('.countdown-title').textContent = 'الإجابات متاحة الآن';
-                document.querySelector('.countdown-section').style.background = '#27ae60';
-                document.getElementById('statusBadge').textContent = 'متاح';
-                document.getElementById('statusBadge').classList.add('available');
-                
-                return;
+            </div>
+        </div>
+
+        <div id="node-class-section" class="code-section">
+            <div class="section-header">
+                <span> Node Class</span>
+                <button class="close-btn" onclick="closeSubSection('node-class')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    
+    Node(int value) {
+        cout &lt;&lt; "Node constructor called with value: " &lt;&lt; value &lt;&lt; endl;
+        data = value;
+        next = nullptr;
+    }
+    
+    void display() {
+        cout &lt;&lt; "Node Data: " &lt;&lt; data &lt;&lt; endl;
+        if (next != nullptr) {
+            cout &lt;&lt; "Next Node exists" &lt;&lt; endl;
+        } else {
+            cout &lt;&lt; "Next Node is nullptr" &lt;&lt; endl;
+        }
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Node Class Demo ===" &lt;&lt; endl;
+    
+    cout &lt;&lt; "\nCreating Node with value 100:" &lt;&lt; endl;
+    Node* node1 = new Node(100);
+    node1-&gt;display();
+    
+    cout &lt;&lt; "\nCreating Node with value 200:" &lt;&lt; endl;
+    Node* node2 = new Node(200);
+    node2-&gt;display();
+    
+    cout &lt;&lt; "\nCreating Node with value 300:" &lt;&lt; endl;
+    Node* node3 = new Node(300);
+    node3-&gt;display();
+    
+    cout &lt;&lt; "\nLinking nodes together:" &lt;&lt; endl;
+    node1-&gt;next = node2;
+    node2-&gt;next = node3;
+    
+    cout &lt;&lt; "Node 1: ";
+    node1-&gt;display();
+    cout &lt;&lt; "Node 2: ";
+    node2-&gt;display();
+    cout &lt;&lt; "Node 3: ";
+    node3-&gt;display();
+    
+    cout &lt;&lt; "\nTraversing linked nodes:" &lt;&lt; endl;
+    Node* current = node1;
+    int count = 1;
+    while (current != nullptr) {
+        cout &lt;&lt; "Node " &lt;&lt; count &lt;&lt; " data: " &lt;&lt; current-&gt;data &lt;&lt; endl;
+        current = current-&gt;next;
+        count++;
+    }
+    
+    delete node1;
+    delete node2;
+    delete node3;
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="linkedlist-class-section" class="code-section">
+            <div class="section-header">
+                <span> Linked List Class</span>
+                <button class="close-btn" onclick="closeSubSection('linkedlist-class')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+class LinkedList {
+private:
+    Node* head;
+    
+public:
+    LinkedList() {
+        cout &lt;&lt; "LinkedList constructor called" &lt;&lt; endl;
+        head = nullptr;
+    }{
+        cout &lt;&lt; "LinkedList destructor called - cleaning up memory" &lt;&lt; endl;
+        Node* current = head;
+        while (current != nullptr) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+    }
+    
+    bool isEmpty() {
+        return head == nullptr;
+    }
+    
+    Node* getHead() {
+        return head;
+    }
+    
+    void add(int value) {
+        Node* newNode = new Node(value);
+        
+        if (head == nullptr) {
+            head = newNode;
+            cout &lt;&lt; "Added first node with value: " &lt;&lt; value &lt;&lt; endl;
+        } else {
+            Node* current = head;
+            while (current->next != nullptr) {
+                current = current->next;
             }
+            current->next = newNode;
+            cout &lt;&lt; "Added node with value: " &lt;&lt; value &lt;&lt; endl;
+        }
+    }
+    
+    void display() {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* current = head;
+        cout &lt;&lt; "List: ";
+        while (current != nullptr) {
+            cout &lt;&lt; current->data;
+            if (current->next != nullptr) {
+                cout &lt;&lt; " -> ";
+            }
+            current = current->next;
+        }
+        cout &lt;&lt; endl;
+    }
+};
 
-            // Calculate time units
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+int main() {
+    cout &lt;&lt; "=== Linked List Class Demo ===" &lt;&lt; endl;
+    
+    LinkedList list;
+    
+    cout &lt;&lt; "\nChecking if list is empty:" &lt;&lt; endl;
+    if (list.isEmpty()) {
+        cout &lt;&lt; "List is empty" &lt;&lt; endl;
+    }
+    
+    cout &lt;&lt; "\nAdding elements to the list:" &lt;&lt; endl;
+    list.add(10);
+    list.add(20);
+    list.add(30);
+    list.add(40);
+    list.add(50);
+    
+    cout &lt;&lt; "\nDisplaying list:" &lt;&lt; endl;
+    list.display();
+    
+    cout &lt;&lt; "\nChecking if list is empty:" &lt;&lt; endl;
+    if (list.isEmpty()) {
+        cout &lt;&lt; "List is empty" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "List is not empty" &lt;&lt; endl;
+    }
+    
+    cout &lt;&lt; "\nProgram ending..." &lt;&lt; endl;
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
 
-            // Update display
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        <div id="create-display-section" class="code-section">
+            <div class="section-header">
+                <span> Create & Display</span>
+                <button class="close-btn" onclick="closeSubSection('create-display')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+class LinkedList {
+private:
+    Node* head;
+    
+public:
+    LinkedList() {
+        head = nullptr;
+    }
+    
+    void create(int value) {
+        Node* newNode = new Node(value);
+        
+        if (head == nullptr) {
+            head = newNode;
+        } else {
+            Node* current = head;
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+            current->next = newNode;
+        }
+    }
+    
+    void display() {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* current = head;
+        cout &lt;&lt; "List: ";
+        while (current != nullptr) {
+            cout &lt;&lt; current->data;
+            if (current->next != nullptr) {
+                cout &lt;&lt; " -> ";
+            }
+            current = current->next;
+        }
+        cout &lt;&lt; endl;
+    }
+    
+    void displayWithDetails() {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* current = head;
+        int position = 0;
+        cout &lt;&lt; "List Details:" &lt;&lt; endl;
+        while (current != nullptr) {
+            cout &lt;&lt; "Position " &lt;&lt; position &lt;&lt; ": " &lt;&lt; current->data;
+            if (current->next != nullptr) {
+                cout &lt;&lt; " (Next: " &lt;&lt; current->next->data &lt;&lt; ")";
+            } else {
+                cout &lt;&lt; " (Last Node)";
+            }
+            cout &lt;&lt; endl;
+            current = current->next;
+            position++;
+        }
+    }
+    
+    void displayReverse(Node* node) {
+        if (node == nullptr) {
+            return;
+        }
+        displayReverse(node->next);
+        cout &lt;&lt; node->data &lt;&lt; " ";
+    }
+    
+    void printReverse() {
+        cout &lt;&lt; "List in reverse: ";
+        displayReverse(head);
+        cout &lt;&lt; endl;
+    }
+    
+    Node* getHead() {
+        return head;
+    }{
+        Node* current = head;
+        while (current != nullptr) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Create & Display Demo ===" &lt;&lt; endl;
+    
+    LinkedList list;
+    
+    cout &lt;&lt; "\nCreating linked list with values:" &lt;&lt; endl;
+    list.create(100);
+    list.create(200);
+    list.create(300);
+    list.create(400);
+    list.create(500);
+    
+    cout &lt;&lt; "\nDisplaying list:" &lt;&lt; endl;
+    list.display();
+    
+    cout &lt;&lt; "\nDisplaying list with details:" &lt;&lt; endl;
+    list.displayWithDetails();
+    
+    cout &lt;&lt; "\nDisplaying list in reverse order:" &lt;&lt; endl;
+    list.printReverse();
+    
+    cout &lt;&lt; "\nCreating another list:" &lt;&lt; endl;
+    LinkedList list2;
+    list2.create(10);
+    list2.create(20);
+    list2.create(30);
+    
+    cout &lt;&lt; "\nDisplaying second list:" &lt;&lt; endl;
+    list2.display();
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="search-sum-count-section" class="code-section">
+            <div class="section-header">
+                <span> Search, Sum & Count</span>
+                <button class="close-btn" onclick="closeSubSection('search-sum-count')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+class LinkedList {
+private:
+    Node* head;
+    
+public:
+    LinkedList() {
+        head = nullptr;
+    }
+    
+    void add(int value) {
+        Node* newNode = new Node(value);
+        
+        if (head == nullptr) {
+            head = newNode;
+        } else {
+            Node* current = head;
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+            current->next = newNode;
+        }
+    }
+    
+    void display() {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* current = head;
+        cout &lt;&lt; "List: ";
+        while (current != nullptr) {
+            cout &lt;&lt; current->data;
+            if (current->next != nullptr) {
+                cout &lt;&lt; " -> ";
+            }
+            current = current->next;
+        }
+        cout &lt;&lt; endl;
+    }
+    
+    bool search(int value) {
+        Node* current = head;
+        int position = 0;
+        
+        while (current != nullptr) {
+            if (current->data == value) {
+                cout &lt;&lt; "Value " &lt;&lt; value &lt;&lt; " found at position " &lt;&lt; position &lt;&lt; endl;
+                return true;
+            }
+            current = current->next;
+            position++;
+        }
+        
+        cout &lt;&lt; "Value " &lt;&lt; value &lt;&lt; " not found in the list" &lt;&lt; endl;
+        return false;
+    }
+    
+    int sum() {
+        int total = 0;
+        Node* current = head;
+        
+        while (current != nullptr) {
+            total += current->data;
+            current = current->next;
+        }
+        
+        return total;
+    }
+    
+    int count() {
+        int counter = 0;
+        Node* current = head;
+        
+        while (current != nullptr) {
+            counter++;
+            current = current->next;
+        }
+        
+        return counter;
+    }
+    
+    double average() {
+        int total = sum();
+        int counter = count();
+        
+        if (counter == 0) {
+            return 0.0;
+        }
+        
+        return (double)total / counter;
+    }
+    
+    int findMax() {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return -1;
+        }
+        
+        int max = head->data;
+        Node* current = head->next;
+        
+        while (current != nullptr) {
+            if (current->data > max) {
+                max = current->data;
+            }
+            current = current->next;
+        }
+        
+        return max;
+    }
+    
+    int findMin() {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return -1;
+        }
+        
+        int min = head->data;
+        Node* current = head->next;
+        
+        while (current != nullptr) {
+            if (current->data < min) {
+                min = current->data;
+            }
+            current = current->next;
+        }
+        
+        return min;
+    }{
+        Node* current = head;
+        while (current != nullptr) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Search, Sum & Count Demo ===" &lt;&lt; endl;
+    
+    LinkedList list;
+    
+    cout &lt;&lt; "\nAdding elements to the list:" &lt;&lt; endl;
+    list.add(10);
+    list.add(20);
+    list.add(30);
+    list.add(40);
+    list.add(50);
+    
+    list.display();
+    
+    cout &lt;&lt; "\n=== Search Operations ===" &lt;&lt; endl;
+    list.search(30);
+    list.search(100);
+    list.search(10);
+    
+    cout &lt;&lt; "\n=== Sum Operation ===" &lt;&lt; endl;
+    cout &lt;&lt; "Sum of all elements: " &lt;&lt; list.sum() &lt;&lt; endl;
+    
+    cout &lt;&lt; "\n=== Count Operation ===" &lt;&lt; endl;
+    cout &lt;&lt; "Number of elements: " &lt;&lt; list.count() &lt;&lt; endl;
+    
+    cout &lt;&lt; "\n=== Average Operation ===" &lt;&lt; endl;
+    cout &lt;&lt; "Average of all elements: " &lt;&lt; list.average() &lt;&lt; endl;
+    
+    cout &lt;&lt; "\n=== Find Max Operation ===" &lt;&lt; endl;
+    cout &lt;&lt; "Maximum value: " &lt;&lt; list.findMax() &lt;&lt; endl;
+    
+    cout &lt;&lt; "\n=== Find Min Operation ===" &lt;&lt; endl;
+    cout &lt;&lt; "Minimum value: " &lt;&lt; list.findMin() &lt;&lt; endl;
+    
+    cout &lt;&lt; "\n=== Testing with another list ===" &lt;&lt; endl;
+    LinkedList list2;
+    list2.add(5);
+    list2.add(15);
+    list2.add(3);
+    list2.add(25);
+    list2.add(8);
+    
+    list2.display();
+    cout &lt;&lt; "Sum: " &lt;&lt; list2.sum() &lt;&lt; endl;
+    cout &lt;&lt; "Count: " &lt;&lt; list2.count() &lt;&lt; endl;
+    cout &lt;&lt; "Average: " &lt;&lt; list2.average() &lt;&lt; endl;
+    cout &lt;&lt; "Max: " &lt;&lt; list2.findMax() &lt;&lt; endl;
+    cout &lt;&lt; "Min: " &lt;&lt; list2.findMin() &lt;&lt; endl;
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div id="insertions-section" class="code-section">
+            <div class="section-header">
+                <span> Insertions (First, Last, Position)</span>
+                <button class="close-btn" onclick="closeSubSection('insertions')"> Back</button>
+            </div>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode(this)"> Copy</button>
+                <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+    
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+class LinkedList {
+private:
+    Node* head;
+    
+public:
+    LinkedList() {
+        head = nullptr;
+    }
+    
+    void addAtFirst(int value) {
+        Node* newNode = new Node(value);
+        newNode->next = head;
+        head = newNode;
+        cout &lt;&lt; "Added " &lt;&lt; value &lt;&lt; " at first position" &lt;&lt; endl;
+    }
+    
+    void addAtLast(int value) {
+        Node* newNode = new Node(value);
+        
+        if (head == nullptr) {
+            head = newNode;
+            cout &lt;&lt; "Added " &lt;&lt; value &lt;&lt; " as first element" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* current = head;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+        current->next = newNode;
+        cout &lt;&lt; "Added " &lt;&lt; value &lt;&lt; " at last position" &lt;&lt; endl;
+    }
+    
+    void addAtEnd(int value) {
+        addAtLast(value);
+    }
+    
+    void addAtPosition(int value, int position) {
+        if (position < 0) {
+            cout &lt;&lt; "Invalid position" &lt;&lt; endl;
+            return;
+        }
+        
+        if (position == 0) {
+            addAtFirst(value);
+            return;
+        }
+        
+        Node* newNode = new Node(value);
+        Node* current = head;
+        
+        for (int i = 0; i < position - 1 && current != nullptr; i++) {
+            current = current->next;
+        }
+        
+        if (current == nullptr) {
+            cout &lt;&lt; "Position " &lt;&lt; position &lt;&lt; " is out of bounds" &lt;&lt; endl;
+            delete newNode;
+            return;
+        }
+        
+        newNode->next = current->next;
+        current->next = newNode;
+        cout &lt;&lt; "Added " &lt;&lt; value &lt;&lt; " at position " &lt;&lt; position &lt;&lt; endl;
+    }
+    
+    void addAfterValue(int newValue, int afterValue) {
+        Node* current = head;
+        
+        while (current != nullptr && current->data != afterValue) {
+            current = current->next;
+        }
+        
+        if (current == nullptr) {
+            cout &lt;&lt; "Value " &lt;&lt; afterValue &lt;&lt; " not found in list" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* newNode = new Node(newValue);
+        newNode->next = current->next;
+        current->next = newNode;
+        cout &lt;&lt; "Added " &lt;&lt; newValue &lt;&lt; " after " &lt;&lt; afterValue &lt;&lt; endl;
+    }
+    
+    void addBeforeValue(int newValue, int beforeValue) {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return;
+        }
+        
+        if (head->data == beforeValue) {
+            addAtFirst(newValue);
+            return;
+        }
+        
+        Node* current = head;
+        while (current->next != nullptr && current->next->data != beforeValue) {
+            current = current->next;
+        }
+        
+        if (current->next == nullptr) {
+            cout &lt;&lt; "Value " &lt;&lt; beforeValue &lt;&lt; " not found in list" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* newNode = new Node(newValue);
+        newNode->next = current->next;
+        current->next = newNode;
+        cout &lt;&lt; "Added " &lt;&lt; newValue &lt;&lt; " before " &lt;&lt; beforeValue &lt;&lt; endl;
+    }
+    
+    void display() {
+        if (head == nullptr) {
+            cout &lt;&lt; "List is empty" &lt;&lt; endl;
+            return;
+        }
+        
+        Node* current = head;
+        cout &lt;&lt; "List: ";
+        while (current != nullptr) {
+            cout &lt;&lt; current->data;
+            if (current->next != nullptr) {
+                cout &lt;&lt; " -> ";
+            }
+            current = current->next;
+        }
+        cout &lt;&lt; endl;
+    }{
+        Node* current = head;
+        while (current != nullptr) {
+            Node* temp = current;
+            current = current->next;
+            delete temp;
+        }
+    }
+};
+
+int main() {
+    cout &lt;&lt; "=== Insertions Demo ===" &lt;&lt; endl;
+    
+    LinkedList list;
+    
+    cout &lt;&lt; "\n--- Adding at Last ---" &lt;&lt; endl;
+    list.addAtLast(30);
+    list.addAtLast(40);
+    list.addAtLast(50);
+    list.display();
+    
+    cout &lt;&lt; "\n--- Adding at First ---" &lt;&lt; endl;
+    list.addAtFirst(20);
+    list.addAtFirst(10);
+    list.display();
+    
+    cout &lt;&lt; "\n--- Adding at Position ---" &lt;&lt; endl;
+    list.addAtPosition(25, 2);
+    list.display();
+    
+    list.addAtPosition(35, 4);
+    list.display();
+    
+    cout &lt;&lt; "\n--- Adding at End ---" &lt;&lt; endl;
+    list.addAtEnd(60);
+    list.display();
+    
+    cout &lt;&lt; "\n--- Adding After Value ---" &lt;&lt; endl;
+    list.addAfterValue(32, 30);
+    list.display();
+    
+    cout &lt;&lt; "\n--- Adding Before Value ---" &lt;&lt; endl;
+    list.addBeforeValue(5, 10);
+    list.display();
+    
+    cout &lt;&lt; "\n--- Testing Invalid Operations ---" &lt;&lt; endl;
+    list.addAtPosition(100, 50);
+    list.addAfterValue(200, 999);
+    list.addBeforeValue(300, 888);
+    
+    cout &lt;&lt; "\nFinal List:" &lt;&lt; endl;
+    list.display();
+    
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        
+
+    <div class="footer">
+        <p>© 2024 Eng. Homam Alkrad | Data Structures Course Material</p>
+    </div>
+
+    <script>
+        function showSection(section) {
+            const sections = document.querySelectorAll('.code-section');
+            sections.forEach(s => s.classList.remove('active'));
+            
+            document.getElementById(section + '-section').classList.add('active');
+            
+            document.getElementById(section + '-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            setTimeout(function() {
+                document.querySelectorAll('.code-block pre').forEach(function(block) {
+                    if (!block.classList.contains('hljs')) {
+                        hljs.highlightElement(block);
+                    }
+                });
+            }, 100);
         }
 
-        // Update countdown immediately and every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
+        function closeSection(section) {
+            document.getElementById(section + '-section').classList.remove('active');
+            
+            document.querySelector('.index-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            const code = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.style.background = '#4CAF50';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#667eea';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy code');
+            });
+        }
+
+        function showSubSection(subsection) {
+            const allSubSections = [
+                'class-object', 'constructor', 'destructor', 'encapsulation', 
+                'getters-setters', 'member-functions',
+                'node-class', 'linkedlist-class', 'create-display', 
+                'search-sum-count', 'insertions'
+            ];
+            
+            allSubSections.forEach(sub => {
+                const elem = document.getElementById(sub + '-section');
+                if (elem) elem.classList.remove('active');
+            });
+            
+            const parentSections = ['oop-section', 'linked-section'];
+            parentSections.forEach(parent => {
+                const elem = document.getElementById(parent);
+                if (elem) elem.classList.remove('active');
+            });
+            
+            document.getElementById(subsection + '-section').classList.add('active');
+            
+            document.getElementById(subsection + '-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            setTimeout(function() {
+                document.querySelectorAll('.code-block pre').forEach(function(block) {
+                    if (!block.classList.contains('hljs')) {
+                        hljs.highlightElement(block);
+                    }
+                });
+            }, 100);
+        }
+
+        function closeSubSection(subsection) {
+            document.getElementById(subsection + '-section').classList.remove('active');
+            
+            const oopSubs = ['class-object', 'constructor', 'destructor', 'encapsulation', 'getters-setters', 'member-functions'];
+            const linkedSubs = ['node-class', 'linkedlist-class', 'create-display', 'search-sum-count', 'insertions'];
+            
+            if (oopSubs.includes(subsection)) {
+                document.getElementById('oop-section').classList.add('active');
+                document.getElementById('oop-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else if (linkedSubs.includes(subsection)) {
+                document.getElementById('linked-section').classList.add('active');
+                document.getElementById('linked-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Highlight.js initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.code-block pre').forEach(function(block) {
+                hljs.highlightElement(block);
+            });
+        });
     </script>
 </body>
-
 </html>
